@@ -1,22 +1,9 @@
 <template>
   <div class="class-courses">
-    <!-- Semester Tabs -->
-    <div class="semester-tabs">
-      <button
-        v-for="sem in semesters"
-        :key="sem.id"
-        class="semester-tab"
-        :class="{ 'is-active': activeSemesterId === sem.id }"
-        @click="activeSemesterId = sem.id"
-      >
-        {{ sem.label }}
-      </button>
-    </div>
-
     <!-- Course Grid -->
     <div class="course-grid">
       <CourseCard
-        v-for="course in activeCourses"
+        v-for="course in allCourses"
         :key="course.id"
         :course="course"
         @click="handleCourseClick(course)"
@@ -30,7 +17,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
 import CourseCard from './CourseCard.vue'
 
@@ -41,12 +28,10 @@ const props = defineProps({
   },
 })
 
-const activeSemesterId = ref(props.semesters[0]?.id ?? null)
-
-const activeCourses = computed(() => {
-  const sem = props.semesters.find((s) => s.id === activeSemesterId.value)
-  return sem?.courses ?? []
-})
+// 汇总所有学期的课程
+const allCourses = computed(() =>
+  props.semesters.flatMap((s) => s.courses ?? [])
+)
 
 function handleCourseClick(course) {
   console.log('打开课程', course)
@@ -60,43 +45,9 @@ function handleAddCourse() {
 <style scoped>
 .class-courses {
   padding: 20px 24px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
-}
-
-/* Semester Tabs */
-.semester-tabs {
-  display: flex;
-  gap: 4px;
-  background: #f3f4f8;
-  border-radius: 8px;
-  padding: 4px;
-  width: fit-content;
-}
-
-.semester-tab {
-  padding: 6px 16px;
-  border: none;
-  background: transparent;
-  border-radius: 6px;
-  font-size: 13px;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.semester-tab:hover {
-  color: #5b6ef5;
-}
-
-.semester-tab.is-active {
-  background: #5b6ef5;
-  color: #fff;
-  font-weight: 500;
-  box-shadow: 0 2px 6px rgba(91, 110, 245, 0.3);
 }
 
 /* Course Grid */
@@ -108,9 +59,10 @@ function handleAddCourse() {
 
 /* Add Course Card */
 .add-course-card {
-  width: 148px;
-  height: 148px;
-  border: 1.5px dashed #c8cde8;
+  width: 200px;
+  aspect-ratio: 4 / 3;
+  height: auto;
+  border: 1.5px dashed #9ec5e8;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -125,9 +77,9 @@ function handleAddCourse() {
 }
 
 .add-course-card:hover {
-  border-color: #5b6ef5;
-  color: #5b6ef5;
-  background: #f5f7ff;
+  border-color: #0078e0;
+  color: #0078e0;
+  background: #f0f7ff;
 }
 
 .add-icon {

@@ -40,7 +40,7 @@ const badgeLabel = computed(() => BADGE_MAP[props.course.type] ?? props.course.t
 
 <style scoped>
 .course-card {
-  width: 148px;
+  width: 200px;
   cursor: pointer;
   border-radius: 8px;
   overflow: hidden;
@@ -58,7 +58,8 @@ const badgeLabel = computed(() => BADGE_MAP[props.course.type] ?? props.course.t
 .card-cover {
   position: relative;
   width: 100%;
-  height: 110px;
+  aspect-ratio: 4 / 3;
+  height: auto;
   background: linear-gradient(135deg, #1e2a6e 0%, #2d3a8c 100%);
   overflow: hidden;
 }
@@ -95,7 +96,7 @@ const badgeLabel = computed(() => BADGE_MAP[props.course.type] ?? props.course.t
 }
 
 .badge-open {
-  background: #5b6ef5;
+  background: #0078e0;
   color: #fff;
 }
 

@@ -10,19 +10,18 @@
           </span>
         </div>
         <div class="header-actions">
-          <el-button size="small" @click="$emit('edit', classInfo)">
+          <el-button @click="$emit('edit', classInfo)">
             <el-icon><EditPen /></el-icon>
             修改信息
           </el-button>
           <el-button
-            size="small"
             :disabled="classInfo.deletable === false"
             @click="$emit('delete', classInfo)"
           >
             <el-icon><Delete /></el-icon>
             删除班级
           </el-button>
-          <el-button size="small" type="danger" plain @click="$emit('quit', classInfo)">
+          <el-button type="danger" plain @click="$emit('quit', classInfo)">
             退出班级
           </el-button>
         </div>
@@ -47,18 +46,18 @@
         <div class="info-divider" />
         <div class="info-item">
           <span class="info-label">
-            <el-icon><Calendar /></el-icon>
-            教学开始时间
+            <el-icon><Reading /></el-icon>
+            授课数量
           </span>
-          <span class="info-value">{{ classInfo.startDate || '—' }}</span>
+          <span class="info-value">{{ classInfo.courseCount ?? 0 }} 门</span>
         </div>
         <div class="info-divider" />
         <div class="info-item">
           <span class="info-label">
-            <el-icon><Calendar /></el-icon>
-            教学结束时间
+            <el-icon><Timer /></el-icon>
+            创建时间
           </span>
-          <span class="info-value">{{ classInfo.endDate || '—' }}</span>
+          <span class="info-value">{{ classInfo.createDate || '—' }}</span>
         </div>
       </div>
     </div>
@@ -112,7 +111,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { EditPen, Delete, User, Avatar, Calendar, Download, Upload, Plus, Link } from '@element-plus/icons-vue'
+import { EditPen, Delete, User, Avatar, Reading, Timer, Download, Upload, Plus, Link } from '@element-plus/icons-vue'
 import ClassCourses from './ClassCourses.vue'
 import StudentList from './StudentList.vue'
 
@@ -145,6 +144,7 @@ function handleLinkStudent() { console.log('关联学生') }
   flex-direction: column;
   gap: 12px;
   min-width: 0;
+  align-self: flex-start;
 }
 
 /* Header + Info card */
@@ -189,8 +189,8 @@ function handleLinkStudent() { console.log('关联学生') }
 }
 
 .tag-self {
-  color: #5b6ef5;
-  background-color: #eef0fd;
+  color: #0078e0;
+  background-color: #e6f2fc;
 }
 
 .header-actions {
@@ -247,13 +247,10 @@ function handleLinkStudent() { console.log('关联学生') }
 
 /* Tab Card */
 .tab-card {
-  flex: 1;
   background: #fff;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  min-height: 0;
 }
 
 /* Tab Nav */
@@ -295,20 +292,18 @@ function handleLinkStudent() { console.log('关联学生') }
 }
 
 .tab-btn:hover {
-  color: #5b6ef5;
+  color: #0078e0;
 }
 
 .tab-btn.is-active {
   background: #fff;
-  color: #5b6ef5;
+  color: #0078e0;
   font-weight: 500;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Tab Content */
 .tab-content {
-  flex: 1;
-  overflow-y: auto;
-  min-height: 0;
+  overflow: visible;
 }
 </style>

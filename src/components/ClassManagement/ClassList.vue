@@ -42,14 +42,14 @@ defineEmits(['select', 'add'])
 
 <style scoped>
 .class-list {
-  width: 220px;
+  width: 280px;
   flex-shrink: 0;
   background: #fff;
   border-radius: 8px;
   padding: 20px 0 16px;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  align-self: flex-start;
 }
 
 .list-title {
@@ -82,13 +82,13 @@ defineEmits(['select', 'add'])
 
 .list-item:hover {
   background-color: #f5f7ff;
-  color: #5b6ef5;
+  color: #0078e0;
 }
 
 .list-item.is-active {
-  background-color: #eef0fd;
-  border-left-color: #5b6ef5;
-  color: #5b6ef5;
+  background-color: #e6f2fc;
+  border-left-color: #0078e0;
+  color: #0078e0;
   font-weight: 500;
 }
 
@@ -120,8 +120,8 @@ defineEmits(['select', 'add'])
 }
 
 .tag-self {
-  color: #5b6ef5;
-  background-color: #eef0fd;
+  color: #0078e0;
+  background-color: #e6f2fc;
 }
 
 .add-btn {
@@ -131,18 +131,18 @@ defineEmits(['select', 'add'])
   gap: 6px;
   margin: 8px 16px 4px;
   padding: 9px 0;
-  border: 1.5px dashed #c8cde8;
+  border: 1.5px dashed #9ec5e8;
   border-radius: 6px;
   background: transparent;
-  color: #8b92c8;
+  color: #6aa3cc;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .add-btn:hover {
-  border-color: #5b6ef5;
-  color: #5b6ef5;
+  border-color: #0078e0;
+  color: #0078e0;
   background-color: #f5f7ff;
 }
 </style>

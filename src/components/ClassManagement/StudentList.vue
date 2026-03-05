@@ -162,7 +162,7 @@ function handleCommand(cmd, row) {
 .op-dots {
   font-size: 18px;
   font-weight: 700;
-  color: #5b6ef5;
+  color: #0078e0;
   cursor: pointer;
   letter-spacing: 2px;
   padding: 4px 6px;

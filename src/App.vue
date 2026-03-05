@@ -25,5 +25,7 @@ body {
   padding: 24px;
   min-height: 100vh;
   background-color: #f0f2f5;
+  max-width: 80%;
+  margin: 0 auto;
 }
 </style>
